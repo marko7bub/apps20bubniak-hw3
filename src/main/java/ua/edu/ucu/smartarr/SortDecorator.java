@@ -16,7 +16,8 @@ public class SortDecorator extends SmartArrayDecorator {
     }
 
     private Object[] sortComparator() {
-        ArrayList<Object> newArList = new ArrayList<Object>(Arrays.asList(smartArray.toArray()));
+        ArrayList<Object> newArList = new
+                ArrayList<Object>(Arrays.asList(smartArray.toArray()));
         newArList.sort(this.comparator);
         return newArList.toArray();
     }

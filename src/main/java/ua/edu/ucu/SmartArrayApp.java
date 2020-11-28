@@ -61,31 +61,40 @@ public class SmartArrayApp {
         MyPredicate studPredicate = new MyPredicate() {
             @Override
             public boolean test(Object student) {
-                return ((Student) student).getGPA() >= 4 && ((Student) student).getYear() == 2;
+                return ((Student) student).getGPA() >= 4 &&
+                        ((Student) student).getYear() == 2;
             }
         };
 
         MyComparator studComparator = new MyComparator() {
             @Override
             public int compare(Object stud1, Object stud2) {
-                return ((Student) stud1).getSurname().compareTo(((Student) stud2).getSurname());
+                return ((Student) stud1).getSurname().compareTo
+                        (((Student) stud2).getSurname());
             }
         };
 
         MyFunction stucFunction = new MyFunction() {
             @Override
             public Object apply(Object stud) {
-                return ((Student) stud).getSurname() + " " + ((Student) stud).getName();
+                return ((Student) stud).getSurname() + " " +
+                        ((Student) stud).getName();
             }
         };
 
         SmartArray studentSmartArray = new BaseArray(students);
-        studentSmartArray = new FilterDecorator(studentSmartArray, studPredicate);
-        studentSmartArray = new SortDecorator(studentSmartArray, studComparator);
-        studentSmartArray = new MapDecorator(studentSmartArray, stucFunction);
+        studentSmartArray = new FilterDecorator(studentSmartArray,
+                studPredicate);
+        studentSmartArray = new SortDecorator(studentSmartArray,
+                studComparator);
+        studentSmartArray = new MapDecorator(studentSmartArray,
+                stucFunction);
         Object[] result = studentSmartArray.toArray();
-        String[] studSmartArray = Arrays.copyOf(result, result.length, String[].class);
-        DistinctDecorator finArray = new DistinctDecorator(new BaseArray(studSmartArray));
-        return Arrays.copyOf(finArray.toArray(), finArray.toArray().length, String[].class);
+        String[] studSmartArray = Arrays.copyOf(result,
+                result.length, String[].class);
+        DistinctDecorator finArray = new DistinctDecorator(new
+                BaseArray(studSmartArray));
+        return Arrays.copyOf(finArray.toArray(),
+                finArray.toArray().length, String[].class);
     }
 }
