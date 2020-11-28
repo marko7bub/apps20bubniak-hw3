@@ -1,5 +1,8 @@
 package ua.edu.ucu;
 
+import java.lang.*;
+
+
 
 class Student {
 
@@ -34,6 +37,10 @@ class Student {
     @Override
     public String toString() {
         return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
+    }
+
+    public boolean equals(Student stud){
+        return Math.abs(this.GPA - stud.GPA) < 0.000001 && this.year == stud.year && this.name == stud.getName() && this.surname == stud.getSurname();
     }
 
 }
